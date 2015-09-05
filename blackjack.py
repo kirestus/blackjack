@@ -7,8 +7,16 @@ player_hand = []
 dealer_hand = []
 
 #small splashscreen before the game boots up
+
+def sysclear():
+	if os.name == 'nt':
+		return os.system("cls")
+	else:
+		return os.system("clear")
+	
+
 def intro():
-	os.system("clear")
+	sysclear()
 	print "\n"
 	print "+----------------------------+"
 	print "+  AIR BUD WORLD BLACK JACK  +"  
@@ -107,7 +115,7 @@ def hitorstay():
 	if (check_value(player_hand, 'player')) == "BUST":
 		print "player Busts"
 	else:
-		choice = raw_input("Do you want to hit or stay?: ")
+		choice = raw_input('Do you want to "hit" or "stay"?: ')
 		if choice == 'hit'or choice == '1' or choice == 'Hit':
 			drawcard('player',1)
 			print "the player has %s" %player_hand
@@ -126,7 +134,7 @@ def gameloop():
 			gameround(0)
 			reset()
 			again = raw_input("Care to play another hand?: ")
-			os.system('clear')
+			sysclear()
 		else:
 			playgame = 0;
 			
